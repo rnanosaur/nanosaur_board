@@ -1,0 +1,10 @@
+- git:
+    local-name: nanosaur
+    uri: https://github.com/rnanosaur/nanosaur.git
+- git:
+    local-name: isaac_ros_apriltag
+    version: patch-1
+    uri: https://github.com/rbonghi/isaac_ros_apriltag.git
+- git:
+    local-name: rosboard
+    uri: https://github.com/dheera/rosboard.git
