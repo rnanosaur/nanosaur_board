@@ -6,5 +6,9 @@
     version: patch-1
     uri: https://github.com/rbonghi/isaac_ros_apriltag.git
 - git:
+    local-name: ros2_jetson_stats
+    version: foxy
+    uri: https://github.com/rbonghi/ros2_jetson_stats.git
+- git:
     local-name: rosboard
     uri: https://github.com/dheera/rosboard.git

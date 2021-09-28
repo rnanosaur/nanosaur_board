@@ -38,15 +38,20 @@ ENV ROS_WS /opt/ros_ws
 RUN mkdir -p $ROS_WS/src
 WORKDIR $ROS_WS
 
-RUN cd $ROS_WS/src && \
-    git clone https://github.com/dheera/rosboard.git && \
-    git clone https://github.com/rnanosaur/nanosaur.git && \
-    git clone --branch patch-1 https://github.com/rbonghi/isaac_ros_apriltag.git && \
-    cd ..
+# Copy wstool webgui.rosinstall
+# to skip rosdep install --from-paths src --ignore-src -r -y
+COPY rosinstall/webgui.rosinstall webgui.rosinstall
+# Initialize ROS2 workspace
+RUN mkdir -p $ROS_WS/src && \
+    pip3 install wheel && \
+    pip3 install -U wstool && \
+    wstool init $ROS_WS/src && \
+    wstool merge -t $ROS_WS/src webgui.rosinstall && \
+    wstool update -t $ROS_WS/src
 
-# build ros package source
-RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
-    colcon build --symlink-install --packages-select rosboard nanosaur_msgs isaac_ros_apriltag_interfaces \
+RUN cd $ROS_WS && \
+    . /opt/ros/$ROS_DISTRO/setup.sh && \
+    colcon build --symlink-install --packages-select rosboard nanosaur_msgs isaac_ros_apriltag_interfaces jetson_stats_msgs \
     --cmake-args \
     -DCMAKE_BUILD_TYPE=Release
 
