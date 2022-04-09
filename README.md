@@ -1,5 +1,5 @@
-# 🧰 nanosaur_tools
-Tools and docker to work with nanosaur
+# 🎒 nanosaur_board
+Access to work with nanosaur
 
 NanoSaur is a little tracked robot ROS2 enabled, made for an NVIDIA Jetson Nano
 
