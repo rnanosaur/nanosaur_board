@@ -40,7 +40,7 @@ WORKDIR $ROS_WS
 
 # Copy wstool webgui.rosinstall
 # to skip rosdep install --from-paths src --ignore-src -r -y
-COPY rosinstall/webgui.rosinstall webgui.rosinstall
+COPY nanosaur_board/rosinstall/webgui.rosinstall webgui.rosinstall
 # Initialize ROS2 workspace
 RUN mkdir -p $ROS_WS/src && \
     pip3 install wheel && \
